@@ -1,0 +1,189 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  font-family: 'Times New Roman', Times, serif;
+  font-style: bold;
+}
+
+body {
+  min-height: 100vh;
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(120deg,#a19595, #635858,#bfacac,#3f3e3e);
+  background-size: 400% 400%;
+  animation: smokeMove 3s ease-in-out infinite;
+  
+}
+@keyframes smokeMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+h1 {
+  color: rgb(12, 12, 13);
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+#notes-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.note,
+#add-note {
+  width: 260px;
+  height: 170px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.5);
+  position: relative;
+  border: 3px solid black;
+}
+
+#add-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+  cursor: pointer;
+}
+
+/* NOTE */
+.note {
+  padding: 15px;
+  animation: notePop 0.35s ease-out; }
+  @keyframes notePop {
+  0%{
+    transform: scale(0.7) rotate(-3deg);
+    opacity: 0;
+  }
+  100%{
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+/* animation for create note */
+@keyframes pulse {
+  0%{
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.5);
+  }
+  70%{
+    transform: scale(1.08);
+    box-shadow: 0 0 0 12px rgba(0,0,0,0);
+  }
+  100%{
+    transform: scale(1);
+  }
+}
+
+#add-note{
+  animation: pulse 2s infinite;
+}
+
+.note:hover{
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+
+.note textarea{
+  width: 100%;
+  height: 100px;
+  border: none;
+  resize: none;
+  background: transparent;
+  outline: none;
+  font-size: 16px;
+  color: rgb(196, 45, 45);
+}
+
+/* controls */
+.controls{
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  display: flex;
+  gap: 6px;
+}
+
+.controls button{
+  width: 32px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: rgba(246, 245, 245, 0.882);
+  font-weight: bold;
+  border: 2px solid black ;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Color picker */
+.color-picker{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 20%;
+  cursor: pointer;
+  border: 2px solid black;
+}
+.color-picker:hover{
+  box-shadow: 0 0 10px rgba(0,0,0,0.7);
+  transform: scale(1.1);
+  transition: all 0.2s ease;
+}
+.bg-particles{
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: -1;
+}
+
+.bg-particles span{
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  animation: float 12s linear infinite;
+}
+
+/* position of span bubble */
+.bg-particles span:nth-child(1) { left: 10%; animation-duration: 10s;}
+.bg-particles span:nth-child(2) { left: 20%; animation-duration: 14s; width: 10px; height: 10px;}
+.bg-particles span:nth-child(3) { left: 35%; animation-duration: 12s;}
+.bg-particles span:nth-child(4) { left: 50%; animation-duration: 16s;width: 14px; height: 14px;}
+.bg-particles span:nth-child(5) { left: 65%; animation-duration: 11s;}
+.bg-particles span:nth-child(6) { left: 75%; animation-duration: 15s;width: 8px; height: 8px;}
+.bg-particles span:nth-child(7) { left: 85%; animation-duration: 13s;}
+.bg-particles span:nth-child(8) { left: 95%; animation-duration: 18s;}
+.bg-particles span:nth-child(9) { left: 40%; animation-duration: 17s;}
+.bg-particles span:nth-child(10){ left: 60%; animation-duration: 19s;}
+
+@keyframes float {
+  from {
+    bottom: -50px;
+    transform: translateX(0);
+  }
+  to {
+    bottom: 110%;
+    transform: translateX(-50px);
+  }
+}
